@@ -13,11 +13,10 @@ print(data)
 imp_data = data.copy()
 
 for col in imp_data.columns:
-    mean = imp_data[col].mean(skipna=True)
-    imp_data[col].fillna(mean, inplace=True)
+    mean = imp_data[col].mean()
+    mode =imp_data[col].mode()[0]
+    val = (mean + mode)/2
+    imp_data[col].fillna(val, inplace=True)
 
 print("\n after Mean Imputation:")
-#only did mean imputation cz the requirements were never to make a "good" code
 print(imp_data)
-
-#and this was my sasta version of SimpleImputer
